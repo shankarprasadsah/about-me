@@ -2,8 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Card } from "@/components/ui/card";
-import { Send, CheckCircle, Download } from "lucide-react";
+import { Send, Mail, Phone, MapPin } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 export const ContactSection = () => {
@@ -39,89 +38,93 @@ export const ContactSection = () => {
     setIsSubmitting(false);
   };
 
-  const handleDownloadResume = () => {
-    toast({
-      title: "Resume downloaded!",
-      description: "The resume has been downloaded to your device.",
-    });
-  };
-
   return (
-    <section className="py-20 bg-gradient-contact relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full animate-float"></div>
-        <div className="absolute top-40 right-20 w-32 h-32 bg-white/5 rounded-full animate-pulse-soft"></div>
-        <div className="absolute bottom-40 left-20 w-16 h-16 bg-white/15 rounded-full animate-bounce-soft"></div>
-      </div>
-
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16 animate-fade-in text-white">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+    <section className="py-20 bg-gray-50 px-4">
+      <div className="container mx-auto max-w-4xl">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-light mb-6 text-about-primary">
             Get In Touch
           </h2>
-          <div className="w-24 h-1 bg-white mx-auto rounded-full"></div>
-          <p className="text-lg text-white/90 mt-6 max-w-2xl mx-auto">
-            Ready to start a project together or just want to say hello? 
-            I'd love to hear from you!
+          <div className="w-24 h-px bg-about-secondary mx-auto"></div>
+          <p className="text-about-secondary text-lg mt-6 font-light">
+            Ready to bring your ideas to life? Let's start a conversation!
           </p>
         </div>
-
-        <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <Card className="p-8 shadow-colorful border-0 bg-white/10 backdrop-blur-md animate-slide-up">
-            <h3 className="text-2xl font-semibold text-white mb-6">
-              Send Me a Message
-            </h3>
-            
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <Input
-                    name="name"
-                    placeholder="Your Name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                    className="bg-white/20 border-white/30 text-white placeholder:text-white/70 focus:bg-white/30 hover:bg-white/25 transition-all duration-300"
-                  />
-                </div>
-                <div>
-                  <Input
-                    name="email"
-                    type="email"
-                    placeholder="Your Email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className="bg-white/20 border-white/30 text-white placeholder:text-white/70 focus:bg-white/30 hover:bg-white/25 transition-all duration-300"
-                  />
-                </div>
+        
+        <div className="bg-white rounded-sm p-8 shadow-soft">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="name" className="block text-sm font-light text-about-primary mb-2">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-200 text-about-primary placeholder-about-secondary/50 focus:outline-none focus:border-about-primary transition-colors duration-200"
+                  placeholder="Your Name"
+                  required
+                />
               </div>
-              
-              <Input
+              <div>
+                <label htmlFor="email" className="block text-sm font-light text-about-primary mb-2">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-200 text-about-primary placeholder-about-secondary/50 focus:outline-none focus:border-about-primary transition-colors duration-200"
+                  placeholder="your.email@example.com"
+                  required
+                />
+              </div>
+            </div>
+            
+            <div>
+              <label htmlFor="subject" className="block text-sm font-light text-about-primary mb-2">
+                Subject
+              </label>
+              <input
+                type="text"
+                id="subject"
                 name="subject"
-                placeholder="Subject"
                 value={formData.subject}
                 onChange={handleInputChange}
+                className="w-full px-4 py-3 border border-gray-200 text-about-primary placeholder-about-secondary/50 focus:outline-none focus:border-about-primary transition-colors duration-200"
+                placeholder="Project Collaboration"
                 required
-                className="bg-white/20 border-white/30 text-white placeholder:text-white/70 focus:bg-white/30 hover:bg-white/25 transition-all duration-300"
               />
-              
-              <Textarea
+            </div>
+            
+            <div>
+              <label htmlFor="message" className="block text-sm font-light text-about-primary mb-2">
+                Message
+              </label>
+              <textarea
+                id="message"
                 name="message"
-                placeholder="Your Message"
-                rows={5}
+                rows={6}
                 value={formData.message}
                 onChange={handleInputChange}
+                className="w-full px-4 py-3 border border-gray-200 text-about-primary placeholder-about-secondary/50 focus:outline-none focus:border-about-primary transition-colors duration-200 resize-none"
+                placeholder="Tell me about your project or just say hello!"
                 required
-                className="bg-white/20 border-white/30 text-white placeholder:text-white/70 focus:bg-white/30 hover:bg-white/25 resize-none transition-all duration-300"
-              />
-              
-              <Button
+              ></textarea>
+            </div>
+            
+            <div className="text-center">
+              <Button 
                 type="submit"
+                variant="outline"
+                size="lg" 
                 disabled={isSubmitting}
-                className="w-full bg-white text-about-primary hover:bg-white/90 shadow-soft hover:shadow-glow transition-all duration-300 hover:scale-105"
+                className="border-about-primary text-about-primary hover:bg-about-primary hover:text-white px-8 py-3 transition-all duration-200 font-light"
               >
                 {isSubmitting ? (
                   <div className="flex items-center">
@@ -129,65 +132,30 @@ export const ContactSection = () => {
                     Sending...
                   </div>
                 ) : (
-                  <div className="flex items-center">
+                  <>
                     <Send className="w-5 h-5 mr-2" />
                     Send Message
-                  </div>
+                  </>
                 )}
               </Button>
-            </form>
-          </Card>
-
-          {/* Contact Info & Resume Download */}
-          <div className="space-y-8 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            <Card className="p-8 shadow-soft border-0 bg-white/10 backdrop-blur-md text-white">
-              <h3 className="text-2xl font-semibold mb-6">
-                Let's Talk About Your Project
-              </h3>
-              
-              <div className="space-y-4 text-white/90">
-                <p className="leading-relaxed">
-                  I'm always excited to work on new projects and collaborate with 
-                  passionate people. Whether you have a specific project in mind or 
-                  just want to explore possibilities, I'd love to chat.
-                </p>
-                
-                <div className="space-y-3">
-                  <div className="flex items-center">
-                    <CheckCircle className="w-5 h-5 mr-3 text-white/70" />
-                    <span>Free initial consultation</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-5 h-5 mr-3 text-white/70" />
-                    <span>Quick response time (24-48 hours)</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-5 h-5 mr-3 text-white/70" />
-                    <span>Flexible engagement models</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-5 h-5 mr-3 text-white/70" />
-                    <span>End-to-end project support</span>
-                  </div>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="p-8 shadow-soft border-0 bg-white/10 backdrop-blur-md text-white text-center">
-              <h3 className="text-xl font-semibold mb-4">
-                Want to Know More?
-              </h3>
-              <p className="text-white/90 mb-6">
-                Download my resume to see my full experience, education, and project details.
-              </p>
-              <Button
-                onClick={handleDownloadResume}
-                className="bg-white text-about-primary hover:bg-white/90 shadow-soft hover:shadow-glow transition-all duration-300 hover:scale-105"
-              >
-                <Download className="w-5 h-5 mr-2" />
-                Download Resume
-              </Button>
-            </Card>
+            </div>
+          </form>
+        </div>
+        
+        <div className="mt-12 text-center">
+          <div className="flex flex-wrap justify-center gap-8 text-about-secondary">
+            <div className="flex items-center gap-2">
+              <Mail className="w-5 h-5" />
+              <span className="font-light">alex@example.com</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Phone className="w-5 h-5" />
+              <span className="font-light">+1 (555) 123-4567</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <MapPin className="w-5 h-5" />
+              <span className="font-light">San Francisco, CA</span>
+            </div>
           </div>
         </div>
       </div>

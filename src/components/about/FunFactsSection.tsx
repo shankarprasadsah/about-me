@@ -1,94 +1,77 @@
-import { Card } from "@/components/ui/card";
 import { Coffee, Camera, Music, Gamepad2, Book, Plane } from "lucide-react";
 
 const funFacts = [
   {
     icon: Coffee,
     title: "Coffee Enthusiast",
-    description: "I consume an average of 4 cups of coffee per day ☕",
-    color: "about-warning",
-    bgColor: "from-amber-400 to-orange-500"
+    description: "I consume an average of 4 cups of coffee per day",
   },
   {
     icon: Camera,
     title: "Photography Hobbyist",
-    description: "Captured over 10,000 photos in the last year 📸",
-    color: "about-info",
-    bgColor: "from-blue-400 to-cyan-500"
+    description: "Captured over 10,000 photos in the last year",
   },
   {
     icon: Music,
     title: "Music Producer",
-    description: "Created 25+ electronic music tracks in my home studio 🎵",
-    color: "about-secondary",
-    bgColor: "from-pink-400 to-purple-500"
+    description: "Created 25+ electronic music tracks in my home studio",
   },
   {
     icon: Gamepad2,
     title: "Gaming Enthusiast",
-    description: "Completed 50+ indie games and love game design 🎮",
-    color: "about-success",
-    bgColor: "from-green-400 to-emerald-500"
+    description: "Completed 50+ indie games and love game design",
   },
   {
     icon: Book,
     title: "Avid Reader",
-    description: "Read 24 books last year, mostly sci-fi and design 📚",
-    color: "about-accent",
-    bgColor: "from-teal-400 to-blue-500"
+    description: "Read 24 books last year, mostly sci-fi and design",
   },
   {
     icon: Plane,
     title: "Travel Lover",
-    description: "Visited 15 countries and counting ✈️",
-    color: "about-primary",
-    bgColor: "from-indigo-400 to-purple-500"
+    description: "Visited 15 countries and counting",
   }
 ];
 
 export const FunFactsSection = () => {
   return (
-    <section className="py-20 bg-gradient-to-br from-white to-about-accent/5">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+    <section className="py-20 bg-gray-50 px-4">
+      <div className="container mx-auto max-w-6xl">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-light mb-6 text-about-primary">
             Fun Facts & Interests
           </h2>
-          <div className="w-24 h-1 bg-gradient-hero mx-auto rounded-full"></div>
-          <p className="text-lg text-foreground/70 mt-6 max-w-2xl mx-auto">
-            A glimpse into my personality and what makes me tick outside of work
-          </p>
+          <div className="w-24 h-px bg-about-secondary mx-auto"></div>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {funFacts.map((fact, index) => {
-            const IconComponent = fact.icon;
-            return (
-              <Card 
-                key={fact.title}
-                className="group p-6 shadow-soft border-0 bg-white/70 backdrop-blur-sm hover:shadow-colorful transition-all duration-500 hover:scale-105 hover:-translate-y-2 animate-slide-up cursor-pointer"
-                style={{ animationDelay: `${index * 0.15}s` }}
-              >
-                <div className="text-center">
-                  <div className={`w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-r ${fact.bgColor} flex items-center justify-center group-hover:animate-bounce-soft transition-all duration-300 shadow-glow`}>
-                    <IconComponent className="w-10 h-10 text-white" />
-                  </div>
-                  
-                  <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-about-primary transition-colors duration-300">
-                    {fact.title}
-                  </h3>
-                  
-                  <p className="text-foreground/70 leading-relaxed">
-                    {fact.description}
-                  </p>
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {funFacts.map((fact) => (
+            <div key={fact.title} className="text-center">
+              <div className="mb-6 flex justify-center">
+                <div className="w-16 h-16 rounded-sm bg-white flex items-center justify-center shadow-soft">
+                  <fact.icon className="w-8 h-8 text-about-primary" />
                 </div>
-
-                {/* Decorative elements */}
-                <div className="absolute top-4 right-4 w-3 h-3 bg-gradient-to-r from-about-primary to-about-secondary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse"></div>
-                <div className="absolute bottom-4 left-4 w-2 h-2 bg-gradient-to-r from-about-accent to-about-success rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-              </Card>
-            );
-          })}
+              </div>
+              <h3 className="text-xl font-light text-about-primary mb-2">{fact.title}</h3>
+              <p className="text-about-secondary font-light text-sm">{fact.description}</p>
+            </div>
+          ))}
+        </div>
+        
+        <div className="mt-16 text-center">
+          <div className="bg-white rounded-sm p-8 shadow-soft">
+            <h3 className="text-2xl font-light text-about-primary mb-4">Currently Exploring</h3>
+            <div className="flex flex-wrap justify-center gap-3">
+              {["AI/ML", "Web3", "Mobile Development", "3D Graphics", "Blockchain"].map((interest) => (
+                <span
+                  key={interest}
+                  className="px-4 py-2 border border-about-secondary/20 text-about-secondary rounded-sm text-sm font-light hover:border-about-primary hover:text-about-primary transition-colors duration-200"
+                >
+                  {interest}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
