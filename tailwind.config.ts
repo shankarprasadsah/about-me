@@ -18,6 +18,9 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				poppins: ['Poppins', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -38,6 +41,14 @@ export default {
 				gradient: {
 					start: 'hsl(var(--gradient-start))',
 					end: 'hsl(var(--gradient-end))',
+				},
+				about: {
+					primary: 'hsl(var(--about-primary))',
+					secondary: 'hsl(var(--about-secondary))',
+					accent: 'hsl(var(--about-accent))',
+					success: 'hsl(var(--about-success))',
+					warning: 'hsl(var(--about-warning))',
+					info: 'hsl(var(--about-info))',
 				},
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
@@ -77,6 +88,17 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				}
+			},
+			backgroundImage: {
+				"gradient-hero": "var(--gradient-hero)",
+				"gradient-section": "var(--gradient-section)",
+				"gradient-skills": "var(--gradient-skills)",
+				"gradient-contact": "var(--gradient-contact)",
+			},
+			boxShadow: {
+				soft: "var(--shadow-soft)",
+				colorful: "var(--shadow-colorful)",
+				glow: "var(--shadow-glow)",
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -139,15 +161,35 @@ export default {
 						transform: 'scale(1)',
 						opacity: '1'
 					}
-				}
+				},
+				"slide-up": {
+					"0%": { opacity: "0", transform: "translateY(40px)" },
+					"100%": { opacity: "1", transform: "translateY(0)" },
+				},
+				"float": {
+					"0%, 100%": { transform: "translateY(0px)" },
+					"50%": { transform: "translateY(-10px)" },
+				},
+				"pulse-soft": {
+					"0%, 100%": { opacity: "1" },
+					"50%": { opacity: "0.8" },
+				},
+				"bounce-soft": {
+					"0%, 100%": { transform: "translateY(0)" },
+					"50%": { transform: "translateY(-5px)" },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'slide-in-right': 'slide-in-right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
 				'slide-in-left': 'slide-in-left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-				'fade-in': 'fade-in 0.3s ease-out',
-				'scale-in': 'scale-in 0.2s ease-out'
+				'fade-in': 'fade-in 0.6s ease-out',
+				'scale-in': 'scale-in 0.2s ease-out',
+				"slide-up": "slide-up 0.8s ease-out",
+				"float": "float 3s ease-in-out infinite",
+				"pulse-soft": "pulse-soft 2s ease-in-out infinite",
+				"bounce-soft": "bounce-soft 2s ease-in-out infinite",
 			}
 		}
 	},
